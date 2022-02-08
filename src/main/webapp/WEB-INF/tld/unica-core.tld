@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+    
+    <description>"UniCa core tag library"</description>
+    <display-name>"UniCa tag library"</display-name>
+    <tlib-version>1.0</tlib-version>
+    <short-name>unica</short-name>
+    <uri>/unica-core</uri>
+    <tag>
+        <description><![CDATA[Restituisce le informazioni di una pagina specifica. Questo tag ha anche il sub-tag "ParameterTag" per aggiungere parametri ad un URL, se l'attributo info è valorizzato con un 'url'.]]>
+        </description>
+        <name>unicaPageInfoTag</name>
+        <tag-class>it.tecnit.unica.aps.tags.UnicaPageInfoTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <description><![CDATA[Il codice di una pagina.]]></description>
+            <name>pageCode</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Parametro 'code' della pagina richiesta.
+				Possibili valori: "code" (default value) , "title", "owner" (group), 
+"url", "isPublishOnFly", "pathArray", "hasChild" o "childOf" (con attributo "targetPage").]]></description>
+            <name>info</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Codice della lingua.]]></description>
+            <name>langCode</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Nome della variabile nel pageContext.
+				In questo caso, il systema <b>non farà</b> l'escape dei caratteri speciali presenti nel pageContext.]]></description>
+            <name>var</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Parametri valorizzato quando "param" è "childOf".]]></description>
+            <name>targetPage</name>
+            <required>no</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Attributo utilizzato per effettuare l'escape HTML. Possibili valori (true|false). Default value: true.]]></description>
+            <name>escapeXml</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Page object]]></description>
+            <name>pageVar</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <description><![CDATA[Restituisce l'id del contenuto pubblicato nel frame Main]]></description>
+        <name>unicaMainFrameContentTag</name>
+        <tag-class>it.tecnit.unica.aps.tags.UnicaMainFrameContentTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description><![CDATA[Il codice della pagina da cui estrarre il contenuto]]></description>
+            <name>pageCode</name>
+            <required>no</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description><![CDATA[La variabile in cui memorizzare l'id del contenuto]]></description>
+            <name>var</name>
+            <required>yes</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <description><![CDATA[Mostra il contenuto dato il suo ID.]]></description>
+        <name>content</name>
+        <tag-class>it.tecnit.unica.aps.tags.UnicaContentTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>
+        <![CDATA[ID del contenuto da mostrare. Questo può accettare "expression language".]]>
+            </description>
+            <name>contentId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+        <![CDATA[L'ID del modello da utilizzare per mostrare il contenuto. Il model ID può anche essere specificato esplicitamente.
+                    (il modello deve corrispondere con il tipo di contenuto);]]>
+            </description>
+            <name>modelId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+        <![CDATA[Attiva o disattiva l'inserimento dei valori dei titoli nel contesto richiesta.
+                    I valori dei titoli vengono estratti dal dell'attributo contrassegnata con il ruolo di "jACMS: titolo".
+                    valori ammessi sono (true | false), di default 'false'.]]>
+            </description>
+            <name>publishExtraTitle</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+        <![CDATA[Inserisce il contenuto visualizzato in una variabile di contesto di pagina con il nome fornito.]]>
+            </description>
+            <name>var</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+        <![CDATA[Inserisce la mappa dei valori di attributo indicizzato dal ruolo attributo,
+                in una variabile di contesto di pagina con il nome fornito.]]>
+            </description>
+            <name>attributeValuesByRoleVar</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+        <![CDATA[Definisce se cachare il contenuto. Valori ammessi (true | false), default "true".]]>
+            </description>
+            <name>cacheable</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <description>
+      <![CDATA[Loads a list of contents IDs by applying the filters (if any).
+                Only the IDs of the contents accessible in the portal can be loaded.]]>
+        </description>
+        <name>contentListAddressbook</name>
+        <tag-class>it.tecnit.unica.aps.tags.UnicaContentListTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <description>
+        <![CDATA[Name of the variable in the page context that holds the search result.]]>
+            </description>
+            <name>listName</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <description>
+      <![CDATA[Loads the number of frame where the widget is located.]]>
+        </description>
+        <name>widgetFrameNumber</name>
+        <tag-class>it.tecnit.unica.aps.tags.UnicaWidgetFrameNumberTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <description>
+        <![CDATA[Name of the variable in the page context that holds the frame number.]]>
+            </description>
+            <name>frameid</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <description><![CDATA[Restituisce la descrizione del gruppo]]></description>
+        <name>unicaGroupTag</name>
+        <tag-class>it.tecnit.unica.aps.tags.UnicaGroupTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>La variabile in cui memorizzare la descrizione del gruppo.</description>
+            <name>var</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description><![CDATA[Il codice del gruppo]]></description>
+            <name>groupId</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+</taglib>

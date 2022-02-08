@@ -1,0 +1,85 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: portal-ui
+spec:
+  ports:
+    - port: 8080
+  selector:
+    tier: portal-ui
+  clusterIP: None
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portal-ui
+  labels:
+    app: en7-frontend
+spec:
+  selector:
+    matchLabels:
+      tier: portal-ui
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        tier: portal-ui
+    spec:
+      containers:
+      - image: eugeniosant/portal-ui:7.0.0.4-SNAPSHOT
+        name: portal-ui
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: KEYCLOAK_ENABLED
+          value: 'false'
+        - name: KEYCLOAK_REALM
+          value: entando
+        - name: KEYCLOAK_PUBLIC_CLIENT_ID
+          value: entando-portal-ui-web
+        - name: KEYCLOAK_AUTH_URL
+          value: 'https://dev-kc-nextn.okd-entando.org/auth'
+        - name: KEYCLOAK_CLIENT_ID
+          value: entando-portal-ui
+        - name: KEYCLOAK_CLIENT_SECRET
+          value: dbf6fbfa-6df9-4d9c-a3cc-bcef8501c165
+        - name: ENTANDO_RB_CONFIG_ON_FILE
+          value: 'false'
+        - name: REDIS_ACTIVE
+          value: 'true'
+        - name: REDIS_ADDRESS
+          value: 'redis://redis:6379'
+        - name: SLAVE_INSTANCE_ID
+          value: portal-ui
+        - name: ENTANDO_RB_CONSUMER_ENTANDO7_CORE_LIB_ACTIVE
+          value: 'true'
+        - name: ENTANDO_RB_CONSUMER_ENTANDO7_PORTAL_LIB_ACTIVE
+          value: 'true'
+        - name: ENTANDO_RB_CONSUMER_ENTANDO7_PLUGIN_CMS_LIB_ACTIVE
+          value: 'true'
+        - name: ENTANDO_RB_CONSUMER_ENTANDO7_CORE_LIB_DEFAULT_GRPC_HOST_PORT
+          value: 'quickstart-server-grpc-service:8088'
+        - name: ENTANDO_RB_CONSUMER_ENTANDO7_PORTAL_LIB_DEFAULT_GRPC_HOST_PORT
+          value: 'quickstart-server-grpc-service:8088'
+        - name: ENTANDO_RB_CONSUMER_ENTANDO7_PLUGIN_CMS_LIB_DEFAULT_GRPC_HOST_PORT
+          value: 'quickstart-server-grpc-service:8088'
+        ports:
+        - containerPort: 8080
+          name: portal-ui
+---
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: quickstart-portal-ui-ingress
+spec:
+  rules:
+    - host: portal-ui-entando.10-133-66-22.nip.io
+      http:
+        paths:
+          - path: /portal-ui
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: portal-ui
+                port:
+                  number: 8080

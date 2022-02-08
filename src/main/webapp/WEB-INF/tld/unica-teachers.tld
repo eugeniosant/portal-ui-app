@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+    <description>"UniCa Teachers tag library"</description>
+    <display-name>"UniCa Teachers tag library"</display-name>
+    <tlib-version>1.0</tlib-version>
+    <short-name>teachers</short-name>
+    <uri>/unica-teachers</uri>
+    <tag>
+        <description>Restituisce l'ultimo giorno del mese attuale.
+        </description>
+        <name>lastDayOfMonth</name>
+        <tag-class>it.tecnit.unica.plugins.jpteachers.aps.tags.LastDayOfMonthTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>L'ultimo giorno del mese.</description>
+            <name>var</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <description>Restituisce il contentId del docente in sessione o passato attraverso parametro.
+        </description>
+        <name>teachersContentId</name>
+        <tag-class>it.tecnit.unica.plugins.jpteachers.aps.tags.TeachersContentIdTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>Il contentid del docente.</description>
+            <name>var</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>L'identificativo del docente</description>
+            <name>teacherId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <description>Restituisce il sito del docente in sessione.
+        </description>
+        <name>teachersSite</name>
+        <tag-class>it.tecnit.unica.plugins.jpteachers.aps.tags.TeachersSiteTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>Il sito del docente.</description>
+            <name>var</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <description>Restituisce il gruppo del docente in sessione.
+        </description>
+        <name>teachersGroup</name>
+        <tag-class>it.tecnit.unica.plugins.jpteachers.aps.tags.TeachersGroupTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>Il gruppo del docente.</description>
+            <name>var</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <description>
+            Loads a list of contents IDs by applying the filters (if any).
+            Only the IDs of the contents accessible in the portal can be loaded.
+        </description>
+        <name>contentList</name>
+        <tag-class>it.tecnit.unica.plugins.jpteachers.aps.tags.TeachersContentListTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <description>
+                Name of the variable in the page context that holds the search result.
+            </description>
+            <name>listName</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+                Sets the code of the content types to search.&lt;br/&gt;
+                The name must match the configured one, respecting capital letters and spaces.
+            </description>
+            <name>contentType</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+                Identifier string of the category of the content to search.
+            </description>
+            <name>category</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+                Identifier string of the group of the content to search.
+            </description>
+            <name>group</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+                Toggles the system caching usage when retrieving the list.
+                Admitted values (true|false), default "true".
+            </description>
+            <name>cacheable</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>Inserts the title on a variable of the page context with the name provided.</description>
+            <name>titleVar</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>Inserts the code of the page to link on a variable of the page context with the name provided.</description>
+            <name>pageLinkVar</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>Inserts the description of the page to link on a variable of the page context with the name provided.</description>
+            <name>pageLinkDescriptionVar</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>Name of the variable in the page context that holds the user filter options</description>
+            <name>userFilterOptionsVar</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <description>Restituisce il contenuto del docente in sessione avente id esse 3.
+        </description>
+        <name>teachersContentIdEsse3</name>
+        <tag-class>it.tecnit.unica.plugins.jpteachers.aps.tags.TeachersContentIdEsse3Tag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>Gli insegnamenti del docente.</description>
+            <name>var</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <description>Restituisce il contenuto del docente in sessione avente id ricerca.
+        </description>
+        <name>teachersContentIdRicerca</name>
+        <tag-class>it.tecnit.unica.plugins.jpteachers.aps.tags.TeachersContentIdRicercaTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>I prodotti di ricerca del docente.</description>
+            <name>var</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <description>Restituisce l'idricerca del docente in sessione.
+        </description>
+        <name>teachersIdRicerca</name>
+        <tag-class>it.tecnit.unica.plugins.jpteachers.aps.tags.TeachersIdRicercaTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>L'idricerca del docente.</description>
+            <name>var</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <description>Restituisce l'idesse3 del docente in sessione.
+        </description>
+        <name>teachersIdEsse3</name>
+        <tag-class>it.tecnit.unica.plugins.jpteachers.aps.tags.TeachersIdEsse3Tag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>L'idesse3 del docente.</description>
+            <name>var</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+    </tag>
+	<tag>
+        <description>Restituisce la pagina esse3 del corso in sessione.
+        </description>
+        <name>teachersCourseEsse3</name>
+        <tag-class>it.tecnit.unica.plugins.jpteachers.aps.tags.TeachersCourseEsse3Tag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>La pagina esse3 relativa al corso.</description>
+            <name>var</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+		<attribute>
+            <description>Il codice della pagina</description>
+            <name>pageCode</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+		<attribute>
+            <description>Il gruppo della pagina</description>
+            <name>groupPage</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+	<tag>
+        <description>Restituisce la pagina esse3 degli insegnamenti del corso in sessione.
+        </description>
+        <name>teachersCourseEsse3Teaching</name>
+        <tag-class>it.tecnit.unica.plugins.jpteachers.aps.tags.TeachersCourseEsse3TeachingTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>La pagina esse3 relativa al corso.</description>
+            <name>var</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+		<attribute>
+            <description>Il codice della pagina</description>
+            <name>pageCode</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+		<attribute>
+            <description>Il gruppo della pagina</description>
+            <name>groupPage</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>    
+</taglib>

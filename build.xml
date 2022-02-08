@@ -1,0 +1,7 @@
+<project name="portal-ui" default="WAR-build" basedir=".">
+	<description>portal-ui - Build file</description>
+
+	<import file="buildProperties.xml"/>
+	<import file="buildTasks.xml"/>
+
+</project>
