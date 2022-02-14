@@ -27,7 +27,7 @@ spec:
         tier: portal-ui
     spec:
       containers:
-      - image: eugeniosant/portal-ui:7.0.0.4-SNAPSHOT
+      - image: eugeniosant/portal-ui:7.0.0.4-PS-SNAPSHOT
         name: portal-ui
         imagePullPolicy: IfNotPresent
         env:
@@ -73,7 +73,7 @@ metadata:
   name: quickstart-portal-ui-ingress
 spec:
   rules:
-    - host: portal-ui-entando.10-133-66-22.nip.io
+    - host: portal-ui-entando.10-133-66-250.nip.io
       http:
         paths:
           - path: /portal-ui
